@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
-import { getProduct} from "../data/products";
+import { getProduct } from "../data/products";
 import { ItemDetail } from "./ItemDetail";
 import { useParams } from "react-router-dom";
+import Loader from "./Loader";
 
-export function ItemDetailContainer() {
+const ItemDetailContainer = ()=> {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const { id } = useParams();
 
-    // sacar funcion getproducts de aca 
-
-
-
     useEffect(() => {
+        setLoading(true);
 
         getProduct(id)
             .then((response) => {
@@ -21,6 +19,7 @@ export function ItemDetailContainer() {
             })
             .catch((error) => {
                 console.error(error);
+                setProduct(null);
             })
             .finally(() => {
                 setLoading(false);
@@ -28,13 +27,19 @@ export function ItemDetailContainer() {
 
     }, [id]);
 
-    if (loading) {
-        return <h2>Cargando producto...</h2>;
-    }
-
     return (
-        <div>
-            <ItemDetail product={product} />
-        </div>
+        <section className="item-detail-container">
+
+            {loading ? (
+                <Loader text="Cargando producto..." />
+            ) : product ? (
+                <ItemDetail product={product} />
+            ) : (
+                <h2>Producto no encontrado</h2>
+            )}
+
+        </section>
     );
 }
+
+export default ItemDetailContainer
