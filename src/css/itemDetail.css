@@ -1,0 +1,31 @@
+.detail-container {
+  display: flex;
+  gap: 40px;
+  background-color: #1f1f1f;
+  padding: 30px;
+  border-radius: 16px;
+  color: white;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.detail-image {
+  width: 400px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detail-description {
+  color: #cfcfcf;
+  line-height: 1.6;
+}
+
+.detail-stock {
+  color: #00ff95;
+}

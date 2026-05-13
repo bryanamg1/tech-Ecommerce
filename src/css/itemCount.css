@@ -1,0 +1,57 @@
+.count-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.count-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.count-controls button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background-color: #00bfff;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.count-controls button:hover {
+  background-color: #0099cc;
+}
+
+.count-controls button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.count-controls span {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.add-cart-btn {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #00ff95;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-cart-btn:hover {
+  background-color: #00cc77;
+}
+
+.add-cart-btn:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
