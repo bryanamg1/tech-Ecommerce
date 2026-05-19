@@ -17,6 +17,7 @@ function App() {
         <Route path="/" element={<><CarouselProducts/><ItemListContainer/></>}/>
         <Route path="/item/:id" element={<ItemDetailContainer/>}/>
         <Route path="/category/:category" element={<ItemListContainer/>}/>
+        <Route path="/category/:category/:brand" element={<ItemListContainer />} />
         <Route path="*" element={<Error/>}/>
       </Routes>
     </div>

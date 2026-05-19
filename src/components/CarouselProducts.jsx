@@ -50,14 +50,14 @@ function CarouselProducts() {
             >
                 <img
                 src={product.image}
-                alt={product.title}
+                alt={product.name}
                 className="carousel-image"
                 />
 
                 <div className="carousel-overlay"></div>
 
                 <div className="carousel-info">
-                <h2>{product.title}</h2>
+                <h2>{product.name}</h2>
 
                 <p>{product.description}</p>
 

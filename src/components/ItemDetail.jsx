@@ -2,25 +2,28 @@ import { ItemCount } from "./ItemCount";
 import "../css/itemDetail.css";
 
 export function ItemDetail({ product }) {
-    
-
-
     return (
         <section className="detail-container">
-        <img
+        <div className="detail-image-wrapper">
+            <img
             src={product.image}
-            alt={product.title}
+            alt={product.name}
             className="detail-image"
-        />
+            />
+        </div>
 
         <div className="detail-info">
-            <h2>{product.title}</h2>
+            <span className="detail-category">
+            {product.category} / {product.brand}
+            </span>
+
+            <h1 className="detail-title">{product.name}</h1>
 
             <p className="detail-description">
             {product.description}
             </p>
 
-            <h3>${product.price}</h3>
+            <h3 className="detail-price">${product.price}</h3>
 
             <p className="detail-stock">
             Stock disponible: {product.stock}
