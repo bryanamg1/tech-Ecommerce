@@ -246,3 +246,21 @@
     font-size: 1.2rem;
   }
 }
+
+.cart-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  cursor: pointer;
+
+  text-decoration: none;
+
+  color: white;
+
+  transition: transform 0.25s ease;
+}
+
+.cart-container:hover {
+  transform: scale(1.05);
+}
