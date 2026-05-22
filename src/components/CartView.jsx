@@ -1,10 +1,48 @@
+import { useState } from "react";
+
+import { Trash2, X } from "lucide-react";
+
 import { Link } from "react-router-dom";
 
 import "../css/cart.css";
 
-const CartView = ({cart, total, clear, removeItem,}) => {
+import { formatPrice } from "../utils/formatPrice";
 
-    
+    const CartView = ({
+    cart,
+    total,
+    clear,
+    removeItem,
+    incrementItem,
+    decrementItem,
+    }) => {
+    const [confirmDeleteId, setConfirmDeleteId] =
+        useState(null);
+
+    const handleDecrease = (product) => {
+        // Si la cantidad es 1
+        // activamos modo confirmación
+
+        if (product.quantity === 1) {
+        setConfirmDeleteId(product.id);
+
+        setTimeout(() => {
+            setConfirmDeleteId(null);
+        }, 3000);
+
+        return;
+        }
+
+        decrementItem(product.id);
+    };
+
+    const handleIncrease = (product) => {
+        incrementItem(product.id);
+
+
+        setConfirmDeleteId(null);
+    };
+
     return (
         <section className="cart-container-page">
         <div className="cart-header">
@@ -20,45 +58,95 @@ const CartView = ({cart, total, clear, removeItem,}) => {
 
         <div className="cart-layout">
             <div className="cart-items">
-            {cart.map((product) => (
+            {cart.map((product) => {
+                const isConfirming =
+                confirmDeleteId === product.id;
+
+                return (
                 <article
-                className="cart-item"
-                key={product.id}
+                    className={`cart-item ${
+                    isConfirming
+                        ? "confirm-delete"
+                        : ""
+                    }`}
+                    key={product.id}
                 >
-                <img
+                    <img
                     src={product.image}
                     alt={product.name}
                     className="cart-item-image"
-                />
+                    />
 
-                <div className="cart-item-info">
+                    <div className="cart-item-info">
                     <span className="cart-item-category">
-                    {product.category} / {product.brand}
+                        {product.category} /{" "}
+                        {product.brand}
                     </span>
 
                     <h3>{product.name}</h3>
 
-                    <p>
-                    Cantidad: {product.quantity}
-                    </p>
+                    <div className="cart-quantity-controls">
+                        <button
+                        onClick={() =>
+                            handleDecrease(product)
+                        }
+                        >
+                        -
+                        </button>
+
+                        <span>
+                        {product.quantity}
+                        </span>
+
+                        <button
+                        onClick={() =>
+                            handleIncrease(product)
+                        }
+                        disabled={
+                            product.quantity >=
+                            product.stock
+                        }
+                        >
+                        +
+                        </button>
+                    </div>
 
                     <p className="cart-item-price">
-                    $
-                    {product.price *
-                        product.quantity}
+                        $
+                        {formatPrice(
+                        product.price *
+                            product.quantity
+                        )}
                     </p>
-                </div>
+                    </div>
 
-                <button
+                    <button
                     className="remove-item-btn"
-                    onClick={() =>
-                    removeItem(product.id)
-                    }
-                >
-                    ×
-                </button>
+                    onClick={() => {
+                        if (isConfirming) {
+                        removeItem(product.id);
+                        } else {
+                        setConfirmDeleteId(
+                            product.id
+                        );
+
+                        setTimeout(() => {
+                            setConfirmDeleteId(
+                            null
+                            );
+                        }, 3000);
+                        }
+                    }}
+                    >
+                    {isConfirming ? (
+                        <X size={46} />
+                    ) : (
+                        <Trash2 size={18} />
+                    )}
+                    </button>
                 </article>
-            ))}
+                );
+            })}
             </div>
 
             <aside className="cart-summary">
@@ -67,7 +155,9 @@ const CartView = ({cart, total, clear, removeItem,}) => {
             <div className="summary-row">
                 <span>Total:</span>
 
-                <strong>${total}</strong>
+                <strong>
+                ${formatPrice(total)}
+                </strong>
             </div>
 
             <button className="checkout-btn">

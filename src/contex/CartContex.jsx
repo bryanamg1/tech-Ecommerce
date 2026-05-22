@@ -44,6 +44,44 @@ export const CartProvider = ({ children }) => {
         showNotification("Producto eliminado del carrito", "error");
     };
 
+    const incrementItem = (id) => {
+        const updatedCart = cart.map((prod) => {
+            if (prod.id === id) {
+            if (prod.quantity >= prod.stock) {
+                return prod;
+            }
+
+            return {
+                ...prod,
+                quantity: prod.quantity + 1,
+            };
+            }
+
+            return prod;
+        });
+
+        setCart(updatedCart);
+    };
+
+    const decrementItem = (id) => {
+        const updatedCart = cart.map((prod) => {
+            if (prod.id === id) {
+            if (prod.quantity <= 1) {
+                return prod;
+            }
+
+            return {
+                ...prod,
+                quantity: prod.quantity - 1,
+            };
+            }
+
+            return prod;
+        });
+
+        setCart(updatedCart);
+    };
+
     // EXISTE EN CARRITO
     const isInCart = (id) => {
         return cart.some((prod) => prod.id === id);
@@ -60,7 +98,7 @@ export const CartProvider = ({ children }) => {
     };
 
     return (
-        <CartContext.Provider value={{ cart, addItem, clear, removeItem, isInCart, total, totalItems }}>
+        <CartContext.Provider value={{ cart, addItem, clear, removeItem, isInCart, total, totalItems, incrementItem, decrementItem}}>
         {children}
         </CartContext.Provider>
     );

@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import {formatPrice} from "../utils/formatPrice"
 
 function Item({ product }) {
     return (
@@ -8,7 +9,7 @@ function Item({ product }) {
         <div className="item-info">
             <span className="item-category">{product.category}</span>
             <h3 className="item-title">{product.name}</h3>
-            <p className="item-price">${product.price}</p>
+            <p className="item-price">${formatPrice(product.price)}</p>
             <p className="item-stock">Stock disponible: {product.stock}</p>
 
             <Link className="item-button" to={"/item/" + product.id}>ver detalle</Link>

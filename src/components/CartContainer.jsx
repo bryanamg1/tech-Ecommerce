@@ -6,7 +6,7 @@ import CartView from "./CartView";
 import EmptyCart from "./EmptyCart";
 
 const CartContainer = () => {
-    const { cart, total, clear, removeItem, } = useContext(CartContext);
+    const { cart, total, clear, removeItem, incrementItem, decrementItem } = useContext(CartContext);
 
     return (
         <>
@@ -16,6 +16,8 @@ const CartContainer = () => {
             total={total()}
             clear={clear}
             removeItem={removeItem}
+            incrementItem={incrementItem}
+            decrementItem={decrementItem}
             />
         ) : (
             <EmptyCart />

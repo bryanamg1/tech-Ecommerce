@@ -5,6 +5,7 @@ import "../css/itemDetail.css";
 import { useContext, useState } from "react";
 
 import { CartContext } from "../contex/CartContex";
+import {formatPrice} from "../utils/formatPrice"
 
 import { Link } from "react-router-dom";
 
@@ -43,7 +44,7 @@ export function ItemDetail({ product }) {
             </p>
 
             <h3 className="detail-price">
-            ${product.price}
+            ${formatPrice(product.price)}
             </h3>
 
             <p className="detail-stock">

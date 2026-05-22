@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import {formatPrice} from "../utils/formatPrice"
 
 import "../css/carouselProducts.css";
 
@@ -61,7 +62,7 @@ function CarouselProducts() {
 
                 <p>{product.description}</p>
 
-                <span>${product.price}</span>
+                <span>${formatPrice(product.price)}</span>
                 </div>
             </Link>
             ))}
