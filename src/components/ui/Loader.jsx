@@ -1,6 +1,7 @@
-import "../css/loader.css";
+import "../../css/loader.css";
+import {LOADER_TEXTS} from "../../constants/index"
 
-const Loader = ({ text = "Cargando..." }) => {
+const Loader = ({ text = LOADER_TEXTS.DEFAULT }) => {
     return (
         <div className="loader-container">
             <div className="loader-card">

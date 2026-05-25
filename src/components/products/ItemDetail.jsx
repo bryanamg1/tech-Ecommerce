@@ -1,13 +1,11 @@
-import { ItemCount } from "./ItemCount";
-
-import "../css/itemDetail.css";
-
+import { ItemCount } from "../products/ItemCount";
+import "../../css/itemDetail.css";
 import { useContext, useState } from "react";
-
-import { CartContext } from "../contex/CartContex";
-import {formatPrice} from "../utils/formatPrice"
-
+import { CartContext } from "../../context/CartContext";
+import {formatPrice} from "../../utils/formatPrice"
 import { Link } from "react-router-dom";
+import {ITEM_DETAIL_TEXTS, ROUTES} from "../../constants/index"
+
 
 export function ItemDetail({ product }) {
     const { addItem } = useContext(CartContext);
@@ -54,17 +52,17 @@ export function ItemDetail({ product }) {
             {addedQuantity > 0 ? (
             <div className="detail-actions">
                 <Link
-                to="/"
+                to={ROUTES.HOME}
                 className="continue-shopping-btn"
                 >
-                Seguir comprando
+                {ITEM_DETAIL_TEXTS.CONTINUE_SHOPPING}
                 </Link>
 
                 <Link
-                to="/cart"
+                to={ROUTES.CART}
                 className="go-cart-btn"
                 >
-                Ir al carrito
+                {ITEM_DETAIL_TEXTS.GO_TO_CART}
                 </Link>
             </div>
             ) : (

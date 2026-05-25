@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { getProduct } from "../data/products";
-import { ItemDetail } from "./ItemDetail";
+import { getProduct } from "../../data/products";
+import { ItemDetail } from "../products/ItemDetail";
 import { useParams } from "react-router-dom";
-import Loader from "./Loader";
+import Loader from "../ui/Loader";
+import {ITEM_DETAIL_CONTAINER_TEXTS} from "../../constants/index"
 
 const ItemDetailContainer = ()=> {
     const [product, setProduct] = useState(null);
@@ -24,18 +25,17 @@ const ItemDetailContainer = ()=> {
             .finally(() => {
                 setLoading(false);
             });
-
     }, [id]);
 
     return (
         <section className="item-detail-container">
 
             {loading ? (
-                <Loader text="Cargando producto..." />
-            ) : product ? (
-                <ItemDetail product={product} />
-            ) : (
-                <h2>Producto no encontrado</h2>
+                    <Loader text={ITEM_DETAIL_CONTAINER_TEXTS.LOADING} />
+                ) : product ? (
+                    <ItemDetail product={product} />
+                ) : (
+                    <h2>{ITEM_DETAIL_CONTAINER_TEXTS.PRODUCT_NOT_FOUND}</h2>
             )}
 
         </section>

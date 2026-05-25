@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom'
-import {formatPrice} from "../utils/formatPrice"
+import {formatPrice} from "../../utils/formatPrice"
+import {ITEM_TEXTS, ROUTES} from "../../constants/index"
 
 function Item({ product }) {
     return (
@@ -10,9 +11,9 @@ function Item({ product }) {
             <span className="item-category">{product.category}</span>
             <h3 className="item-title">{product.name}</h3>
             <p className="item-price">${formatPrice(product.price)}</p>
-            <p className="item-stock">Stock disponible: {product.stock}</p>
+            <p className="item-stock">{ITEM_TEXTS.STOCK} {product.stock}</p>
 
-            <Link className="item-button" to={"/item/" + product.id}>ver detalle</Link>
+            <Link className="item-button" to={`${ROUTES.ITEM_DETAIL}/${product.id}`}>{ITEM_TEXTS.DETAIL_BUTTON}</Link>
         </div>
         </article>
     );

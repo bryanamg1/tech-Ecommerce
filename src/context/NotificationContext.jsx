@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import "../css/notification.css";
+import {NOTIFICATION_DURATION} from "../constants/index"
 
 export const NotificationContext = createContext();
 
@@ -14,7 +15,7 @@ export const NotificationProvider = ({ children }) => {
 
         setTimeout(() => {
         setNotification(null);
-        }, 2000);
+        }, NOTIFICATION_DURATION);
     };
 
     const closeNotification = () => {

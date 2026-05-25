@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "../css/itemCount.css";
+import "../../css/itemCount.css";
+import {ITEM_COUNT_TEXTS} from "../../constants/index"
 
 export function ItemCount({ stock, onAdd }) {
     const [count, setCount] = useState(0);
@@ -45,7 +46,7 @@ export function ItemCount({ stock, onAdd }) {
             disabled={count === 0}
             onClick={handleAdd}
         >
-            Agregar al carrito
+            {ITEM_COUNT_TEXTS.ADD_TO_CART}
         </button>
         </div>
     );

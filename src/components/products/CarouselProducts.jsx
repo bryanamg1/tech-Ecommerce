@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {formatPrice} from "../utils/formatPrice"
+import {formatPrice} from "../../utils/formatPrice"
+import {TIME_INTERVAL_CAROUSEL, MAX_CAROUSEL_PRODUCTS} from "../../constants/index"
 
-import "../css/carouselProducts.css";
+import "../../css/carouselProducts.css";
 
-import { products } from "../data/products";
-import { getRandomProducts } from "../utils/getRandomProducts";
+import { products } from "../../data/products";
+import { getRandomProducts } from "../../utils/getRandomProducts";
 
 function CarouselProducts() {
     const [carouselProducts, setCarouselProducts] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
-        const randomProducts = getRandomProducts(products, 5);
+        const randomProducts = getRandomProducts(products, MAX_CAROUSEL_PRODUCTS);
 
         setCarouselProducts(randomProducts);
     }, []);
@@ -26,7 +27,7 @@ function CarouselProducts() {
             (prevIndex) =>
             (prevIndex + 1) % carouselProducts.length
         );
-        }, 4000);
+        }, TIME_INTERVAL_CAROUSEL);
 
         return () => clearInterval(interval);
     }, [carouselProducts]);

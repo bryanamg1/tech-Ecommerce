@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import CartWidget from "./CartWidget";
-import "../css/navbar.css";
-import {getCategoriesWithBrands } from "../data/products"
+import CartWidget from "../cart/CartWidget";
+import "../../css/navbar.css";
+import {getCategoriesWithBrands } from "../../data/products"
 
 const categories = getCategoriesWithBrands();
 

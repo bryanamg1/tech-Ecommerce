@@ -1,27 +1,26 @@
 import { Link } from "react-router-dom";
-
-import "../css/cart.css";
+import "../../css/cart.css";
+import {EMPTY_CART_TEXTS, ROUTES} from "../../constants/index"
 
 const EmptyCart = () => {
     return (
         <section className="empty-cart-container">
         <div className="empty-cart-card">
             <div className="empty-cart-icon">
-            🛒
+            {EMPTY_CART_TEXTS.ICON}
             </div>
 
-            <h1>Tu carrito está vacío</h1>
+            <h1>{EMPTY_CART_TEXTS.TITLE}</h1>
 
             <p>
-            Parece que todavía no agregaste
-            productos.
+                {EMPTY_CART_TEXTS.DESCRIPTION}
             </p>
 
             <Link
-            to="/"
+            to={ROUTES.HOME}
             className="empty-cart-btn"
             >
-            Explorar productos
+            {EMPTY_CART_TEXTS.ACTION}
             </Link>
         </div>
         </section>

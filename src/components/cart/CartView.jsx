@@ -1,34 +1,22 @@
 import { useState } from "react";
-
 import { Trash2, X } from "lucide-react";
-
 import { Link } from "react-router-dom";
+import "../../css/cart.css";
+import { formatPrice } from "../../utils/formatPrice";
+import {DELETE_CONFIRMATION_DURATION, CART_VIEW_TEXTS, ROUTES } from "../../constants/index"
 
-import "../css/cart.css";
+    const CartView = ({cart,total,clear,removeItem,incrementItem,decrementItem,}) => {
 
-import { formatPrice } from "../utils/formatPrice";
-
-    const CartView = ({
-    cart,
-    total,
-    clear,
-    removeItem,
-    incrementItem,
-    decrementItem,
-    }) => {
-    const [confirmDeleteId, setConfirmDeleteId] =
-        useState(null);
+    const [confirmDeleteId, setConfirmDeleteId] = useState(null);
 
     const handleDecrease = (product) => {
-        // Si la cantidad es 1
-        // activamos modo confirmación
 
         if (product.quantity === 1) {
         setConfirmDeleteId(product.id);
 
         setTimeout(() => {
             setConfirmDeleteId(null);
-        }, 3000);
+        }, DELETE_CONFIRMATION_DURATION);
 
         return;
         }
@@ -46,13 +34,13 @@ import { formatPrice } from "../utils/formatPrice";
     return (
         <section className="cart-container-page">
         <div className="cart-header">
-            <h1>Tu carrito</h1>
+            <h1>{CART_VIEW_TEXTS.TITLE}</h1>
 
             <button
             className="clear-cart-btn"
             onClick={clear}
             >
-            Vaciar carrito
+            {CART_VIEW_TEXTS.CLEAR_CART}
             </button>
         </div>
 
@@ -134,7 +122,7 @@ import { formatPrice } from "../utils/formatPrice";
                             setConfirmDeleteId(
                             null
                             );
-                        }, 3000);
+                        }, DELETE_CONFIRMATION_DURATION);
                         }
                     }}
                     >
@@ -150,10 +138,10 @@ import { formatPrice } from "../utils/formatPrice";
             </div>
 
             <aside className="cart-summary">
-            <h2>Resumen</h2>
+            <h2>{CART_VIEW_TEXTS.RESUMEN}</h2>
 
             <div className="summary-row">
-                <span>Total:</span>
+                <span>{CART_VIEW_TEXTS.TOTAL}</span>
 
                 <strong>
                 ${formatPrice(total)}
@@ -161,14 +149,14 @@ import { formatPrice } from "../utils/formatPrice";
             </div>
 
             <button className="checkout-btn">
-                Finalizar compra
+                {CART_VIEW_TEXTS.FINISH_PURCHASE}
             </button>
 
             <Link
-                to="/"
+                to={ROUTES.HOME}
                 className="continue-shopping"
             >
-                Seguir comprando
+                {CART_VIEW_TEXTS.CONTINUE_SHOPPING}
             </Link>
             </aside>
         </div>

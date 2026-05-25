@@ -1,23 +1,24 @@
 import { Link } from "react-router-dom";
-import "../css/error.css";
+import "../../css/error.css";
+import {ERROR_TEXTS, ROUTES} from "../../constants/index"
 
 const Error = () => {
     return (
         <section className="error-container">
             <div className="error-card">
 
-                <h1 className="error-code">404</h1>
+                <h1 className="error-code">{ERROR_TEXTS.CODE}</h1>
 
                 <h2 className="error-title">
-                    Página no encontrada
+                    {ERROR_TEXTS.TITLE}
                 </h2>
 
                 <p className="error-text">
-                    La ruta que intentaste visitar no existe o fue movida.
+                    {ERROR_TEXTS.DESCRIPTION}
                 </p>
 
-                <Link to="/" className="error-button">
-                    Volver al inicio
+                <Link to={ROUTES.HOME} className="error-button">
+                    {ERROR_TEXTS.BUTTON}
                 </Link>
 
             </div>
