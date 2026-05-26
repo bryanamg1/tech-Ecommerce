@@ -65,6 +65,7 @@ src/
 ├── utils/
 │   ├── cartUtils.js
 │   └── formatPrice.js
+│   └── getRandomProducts.js
 │
 ├── constants/
 │   └── index.js
