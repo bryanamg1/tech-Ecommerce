@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProducts, uploadProductsToFirebase } from "../../data/products";
+import { getProducts } from "../../data/products";
 import ItemList from "../products/ItemList";
 import Loader from "../ui/Loader";
 import {ITEM_LIST_CONTAINER_TEXTS} from "../../constants/index"
