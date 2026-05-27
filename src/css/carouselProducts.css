@@ -16,6 +16,8 @@
   background-color: #111827;
 }
 
+/* TRACK */
+
 .carousel-track {
   display: flex;
 
@@ -25,6 +27,8 @@
 
   will-change: transform;
 }
+
+/* SLIDE */
 
 .carousel-slide {
   min-width: 100%;
@@ -40,6 +44,8 @@
   overflow: hidden;
 }
 
+/* IMAGE */
+
 .carousel-image {
   width: 100%;
 
@@ -54,6 +60,12 @@
   transition: transform 0.8s ease;
 }
 
+.carousel-slide:hover .carousel-image {
+  transform: scale(0.96);
+}
+
+/* OVERLAY */
+
 .carousel-overlay {
   position: absolute;
 
@@ -66,6 +78,8 @@
     rgba(0, 0, 0, 0.5) 100%
   );
 }
+
+/* INFO */
 
 .carousel-info {
   position: absolute;
@@ -109,6 +123,67 @@
   color: #00ff95;
 }
 
+/* CONTROLS */
+
+.carousel-control {
+  position: absolute;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 52px;
+
+  height: 92px;
+
+  border: none;
+
+  border-radius: 14px;
+
+  background: rgba(15, 23, 42, 0.45);
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 8;
+
+  opacity: 0;
+
+  backdrop-filter: blur(6px);
+
+  transition:
+    opacity 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.carousel:hover .carousel-control {
+  opacity: 1;
+}
+
+.carousel-control:hover {
+  background: rgba(15, 23, 42, 0.75);
+
+  transform: translateY(-50%) scale(1.04);
+}
+
+.carousel-control-left {
+  left: 18px;
+}
+
+.carousel-control-right {
+  right: 18px;
+}
+
+/* DOTS */
+
 .carousel-dots {
   position: absolute;
 
@@ -147,10 +222,6 @@
   transform: scale(1.25);
 }
 
-.carousel-slide:hover .carousel-image {
-  transform: scale(0.96);
-}
-
 /* TABLET */
 
 @media (max-width: 900px) {
@@ -177,6 +248,14 @@
   .carousel-info span {
     font-size: 1.7rem;
   }
+
+  .carousel-control {
+    opacity: 1;
+
+    width: 46px;
+
+    height: 78px;
+  }
 }
 
 /* MOBILE */
@@ -202,9 +281,11 @@
 
   .carousel-info {
     left: 20px;
+
     right: 20px;
 
     top: auto;
+
     bottom: 30px;
 
     transform: none;
@@ -238,7 +319,26 @@
 
   .dot {
     width: 9px;
+
     height: 9px;
+  }
+
+  .carousel-control {
+    width: 38px;
+
+    height: 64px;
+
+    opacity: 1;
+
+    border-radius: 10px;
+  }
+
+  .carousel-control-left {
+    left: 8px;
+  }
+
+  .carousel-control-right {
+    right: 8px;
   }
 }
 
@@ -259,5 +359,11 @@
 
   .carousel-info span {
     font-size: 1.15rem;
+  }
+
+  .carousel-control {
+    width: 32px;
+
+    height: 54px;
   }
 }

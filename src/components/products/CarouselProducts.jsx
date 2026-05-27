@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {formatPrice} from "../../utils/formatPrice"
-import {TIME_INTERVAL_CAROUSEL, MAX_CAROUSEL_PRODUCTS} from "../../constants/index"
-
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { formatPrice } from "../../utils/formatPrice";
+import {TIME_INTERVAL_CAROUSEL,MAX_CAROUSEL_PRODUCTS,ROUTES,} from "../../constants";
 import "../../css/carouselProducts.css";
-
-import { products } from "../../data/products";
+import { getProducts } from "../../data/products";
 import { getRandomProducts } from "../../utils/getRandomProducts";
 
 function CarouselProducts() {
@@ -13,20 +12,41 @@ function CarouselProducts() {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
-        const randomProducts = getRandomProducts(products, MAX_CAROUSEL_PRODUCTS);
+        getProducts()
+        .then((response) => {
+            const randomProducts = getRandomProducts(
+            response,
+            MAX_CAROUSEL_PRODUCTS
+            );
 
-        setCarouselProducts(randomProducts);
+            setCarouselProducts(randomProducts);
+        })
+        .catch((error) => {
+            console.error(error);
+            setCarouselProducts([]);
+        });
     }, []);
 
-    // Auto slide
+    const goToNextSlide = () => {
+        setCurrentIndex(
+        (prevIndex) =>
+            (prevIndex + 1) % carouselProducts.length
+        );
+    };
+
+    const goToPreviousSlide = () => {
+        setCurrentIndex((prevIndex) =>
+        prevIndex === 0
+            ? carouselProducts.length - 1
+            : prevIndex - 1
+        );
+    };
+
     useEffect(() => {
         if (carouselProducts.length === 0) return;
 
         const interval = setInterval(() => {
-        setCurrentIndex(
-            (prevIndex) =>
-            (prevIndex + 1) % carouselProducts.length
-        );
+        goToNextSlide();
         }, TIME_INTERVAL_CAROUSEL);
 
         return () => clearInterval(interval);
@@ -38,6 +58,14 @@ function CarouselProducts() {
 
     return (
         <section className="carousel">
+        <button
+            className="carousel-control carousel-control-left"
+            onClick={goToPreviousSlide}
+            aria-label="Producto anterior"
+        >
+            <ChevronLeft size={34} />
+        </button>
+
         <div
             className="carousel-track"
             style={{
@@ -46,7 +74,7 @@ function CarouselProducts() {
         >
             {carouselProducts.map((product) => (
             <Link
-                to={`/item/${product.id}`}
+                to={`${ROUTES.ITEM_DETAIL}/${product.id}`}
                 className="carousel-slide"
                 key={product.id}
             >
@@ -68,6 +96,14 @@ function CarouselProducts() {
             </Link>
             ))}
         </div>
+
+        <button
+            className="carousel-control carousel-control-right"
+            onClick={goToNextSlide}
+            aria-label="Producto siguiente"
+        >
+            <ChevronRight size={34} />
+        </button>
 
         <div className="carousel-dots">
             {carouselProducts.map((_, index) => (

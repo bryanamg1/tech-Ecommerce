@@ -1,10 +1,11 @@
-import { ItemCount } from "../products/ItemCount";
-import "../../css/itemDetail.css";
 import { useContext, useState } from "react";
-import { CartContext } from "../../context/CartContext";
-import {formatPrice} from "../../utils/formatPrice"
 import { Link } from "react-router-dom";
-import {ITEM_DETAIL_TEXTS, ROUTES} from "../../constants/index"
+import { ItemCount } from "../products/ItemCount";
+import { CartContext } from "../../context/CartContext";
+import { formatPrice } from "../../utils/formatPrice";
+import {ITEM_DETAIL_TEXTS,ROUTES,} from "../../constants";
+import "../../css/itemDetail.css";
+
 
 
 export function ItemDetail({ product }) {
@@ -46,7 +47,7 @@ export function ItemDetail({ product }) {
             </h3>
 
             <p className="detail-stock">
-            Stock disponible: {product.stock}
+            {ITEM_DETAIL_TEXTS.STOCK} {product.stock}
             </p>
 
             {addedQuantity > 0 ? (
