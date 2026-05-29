@@ -9,6 +9,7 @@ import {CartProvider} from "./context/CartContext"
 import { NotificationProvider } from "./context/NotificationContext";
 import CartContainer from "./components/cart/CartContainer"
 import { ROUTES } from "./constants/index"
+import CheckoutContainer from "./components/checkout/CheckoutContainer";
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path={`${ROUTES.CATEGORY}/:category`} element={<ItemListContainer/>}/>
         <Route path={`${ROUTES.CATEGORY}/:category/:brand`} element={<ItemListContainer />} />
         <Route path={ROUTES.CART} element={<CartContainer/>}/>
+        <Route path={ROUTES.CHECKOUT} element={<CheckoutContainer/>}/>
         <Route path="*" element={<Error/>}/>
       </Routes>
     </div>

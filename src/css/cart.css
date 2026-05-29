@@ -357,11 +357,14 @@
 }
 
 /* BUTTONS */
-
 .checkout-btn {
   width: 100%;
 
-  border: none;
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
 
   padding: 14px;
 
@@ -377,17 +380,23 @@
 
   font-weight: 700;
 
+  text-decoration: none;
+
   cursor: pointer;
 
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
+
+  box-shadow: 0 10px 24px
+    rgba(0, 255, 149, 0.18);
 }
 
 .checkout-btn:hover {
   transform: translateY(-2px);
 
-  box-shadow: 0 10px 24px rgba(0, 255, 149, 0.25);
+  box-shadow: 0 14px 28px
+    rgba(0, 255, 149, 0.28);
 }
 
 .continue-shopping {

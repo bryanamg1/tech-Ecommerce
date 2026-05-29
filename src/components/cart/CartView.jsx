@@ -148,9 +148,12 @@ import {DELETE_CONFIRMATION_DURATION, CART_VIEW_TEXTS, ROUTES } from "../../cons
                 </strong>
             </div>
 
-            <button className="checkout-btn">
+            <Link
+                to={ROUTES.CHECKOUT}
+                className="checkout-btn"
+            >
                 {CART_VIEW_TEXTS.FINISH_PURCHASE}
-            </button>
+            </Link>
 
             <Link
                 to={ROUTES.HOME}

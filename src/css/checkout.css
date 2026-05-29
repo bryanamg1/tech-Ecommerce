@@ -1,0 +1,137 @@
+.checkout-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 24px;
+
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 32px;
+  align-items: start;
+}
+
+.checkout-form,
+.checkout-summary,
+.checkout-success-card {
+  background: white;
+  border-radius: 22px;
+  padding: 32px;
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.1);
+}
+
+.checkout-form h1,
+.checkout-summary h2 {
+  color: #2c3e50;
+  margin-bottom: 24px;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.checkout-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  color: #334155;
+  font-weight: 700;
+}
+
+.checkout-form input {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+}
+
+.checkout-form input:focus {
+  border-color: #00bfff;
+  box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.14);
+}
+
+.checkout-form button,
+.checkout-success-card a {
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+
+  background: linear-gradient(135deg, #00ff95, #00bfff);
+  color: #0f172a;
+
+  font-weight: 800;
+  text-align: center;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.checkout-summary {
+  position: sticky;
+  top: 100px;
+}
+
+.checkout-product,
+.checkout-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.checkout-total {
+  margin-top: 20px;
+  border-bottom: none;
+  font-size: 1.25rem;
+}
+
+.checkout-total strong {
+  color: #00a86b;
+}
+
+.checkout-success {
+  min-height: 70vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+}
+
+.checkout-success-card {
+  max-width: 520px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.checkout-success-card h1 {
+  color: #2c3e50;
+}
+
+.checkout-success-card strong {
+  color: #00a86b;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 850px) {
+  .checkout-container {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-summary {
+    position: static;
+  }
+}
+
+.checkout-error {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  font-weight: 600;
+}

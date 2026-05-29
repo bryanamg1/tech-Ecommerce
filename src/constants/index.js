@@ -40,6 +40,7 @@ export const ROUTES = {
     CART: "/cart",
     ITEM_DETAIL: "/item",
     CATEGORY: "/category",
+    CHECKOUT: "/checkout"
 };
 
 // TEXTS
@@ -95,4 +96,17 @@ export const ERROR_TEXTS = {
 
 export const LOADER_TEXTS = {
     DEFAULT: "Cargando...",
+};
+
+export const CHECKOUT_TEXTS = {
+    TITLE: "Finalizar compra",
+    NAME: "Nombre completo",
+    EMAIL: "Email",
+    PHONE: "Teléfono",
+    SUBMIT: "Confirmar compra",
+    SUMMARY: "Resumen de compra",
+    SUCCESS_TITLE: "Compra realizada con éxito",
+    SUCCESS_MESSAGE: "Tu número de orden es:",
+    BACK_HOME: "Volver al inicio",
+    REPEAT_EMAIL: "Repetir email"
 };
