@@ -8,6 +8,7 @@ El proyecto simula una tienda tecnológica donde los usuarios pueden navegar pro
 
 # 🚀 Tecnologías utilizadas
 
+* Nodejs
 * React
 * Vite
 * React Router DOM
@@ -239,20 +240,6 @@ Home
 → Success Screen
 ```
 
----
-
-# 🔥 Próximas mejoras
-
-* Auth con Firebase
-* Persistencia de carrito
-* Panel administrador
-* Búsqueda global
-* Wishlist
-* Sistema de pagos
-* Skeleton loaders
-* Dark mode
-* TanStack Query
-* Testing
 
 ---
 
