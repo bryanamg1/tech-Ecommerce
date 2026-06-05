@@ -4,10 +4,25 @@ import { Link } from "react-router-dom";
 import "../../css/cart.css";
 import { formatPrice } from "../../utils/formatPrice";
 import {DELETE_CONFIRMATION_DURATION, CART_VIEW_TEXTS, ROUTES } from "../../constants/index"
+import Swal from "sweetalert2"
 
     const CartView = ({cart,total,clear,removeItem,incrementItem,decrementItem,}) => {
 
     const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+    const preConfirm = ()=>{
+        Swal.fire({
+            title: "estas seguro de borrar el carrito",
+            text: "se perderan todos los datos",
+            icon: "question",
+            showCancelButton: true,
+            cancelButtonText: "no",
+            confirmButtonText: "si"
+        }).then((result)=>{
+            if(result.isConfirmed){
+                clear()
+            }
+        })
+    }
 
     const handleDecrease = (product) => {
 
@@ -38,7 +53,7 @@ import {DELETE_CONFIRMATION_DURATION, CART_VIEW_TEXTS, ROUTES } from "../../cons
 
             <button
             className="clear-cart-btn"
-            onClick={clear}
+            onClick={preConfirm}
             >
             {CART_VIEW_TEXTS.CLEAR_CART}
             </button>
